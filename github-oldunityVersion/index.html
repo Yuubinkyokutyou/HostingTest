@@ -73,7 +73,7 @@
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
-          window.unityInstance = unityInstance; // <-- this
+          //window.unityInstance = unityInstance; // <-- this
           loadingBar.style.display = "none";
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
@@ -83,6 +83,9 @@
         });
       };
       document.body.appendChild(script);
+    </script>
+    <script>
+      var unityInstance = window.unityInstance = UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%", {onProgress: UnityProgress});
     </script>
   </body>
 </html>
