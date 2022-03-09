@@ -59,7 +59,7 @@ function OnConnected(channel) {
     dataChannel = channel;
     dataChannel.onmessage = OnMessage;
 
-    unityInstance.SendMessage(
+    window.unityInstance.SendMessage(
         'AyameEventReceiver',
         'OnEvent',
         'OnConnected'
@@ -69,7 +69,7 @@ function OnConnected(channel) {
 function OnDisconnected() {
     dataChannel = null;
     connection = null;
-    unityInstance.SendMessage(
+    window.unityInstance.SendMessage(
         'AyameEventReceiver',
         'OnEvent',
         'OnDisconnected'
@@ -78,7 +78,7 @@ function OnDisconnected() {
 
 function OnMessage(e) {
     let v = btoa(String.fromCharCode(...new Uint8Array(e.data)));
-    unityInstance.SendMessage(
+    window.unityInstance.SendMessage(
         'AyameEventReceiver',
         'OnMessage',
         v
