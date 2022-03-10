@@ -1,6 +1,5 @@
 let dataChannel = null;
 let connection = null;
-var unityInstance = window.unityInstance = UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%", {onProgress: UnityProgress});
 
 function Hoge()
 {

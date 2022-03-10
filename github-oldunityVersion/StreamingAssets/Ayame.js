@@ -1,6 +1,5 @@
 let dataChannel = null;
 let connection = null;
-var unityInstance = window.unityInstance = UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%", {onProgress: UnityProgress});
 
 function Hoge()
 {
@@ -60,7 +59,7 @@ function OnConnected(channel) {
     dataChannel = channel;
     dataChannel.onmessage = OnMessage;
 
-    window.unityInstance.SendMessage(
+    unityInstance.SendMessage(
         'AyameEventReceiver',
         'OnEvent',
         'OnConnected'
@@ -70,7 +69,7 @@ function OnConnected(channel) {
 function OnDisconnected() {
     dataChannel = null;
     connection = null;
-    window.unityInstance.SendMessage(
+    unityInstance.SendMessage(
         'AyameEventReceiver',
         'OnEvent',
         'OnDisconnected'
@@ -79,7 +78,7 @@ function OnDisconnected() {
 
 function OnMessage(e) {
     let v = btoa(String.fromCharCode(...new Uint8Array(e.data)));
-    window.unityInstance.SendMessage(
+    unityInstance.SendMessage(
         'AyameEventReceiver',
         'OnMessage',
         v
